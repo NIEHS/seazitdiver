@@ -28,24 +28,24 @@ Release.zip), after unzip it,
 you should see those files, I will explain how to use them:
 
 - footer.txt:
-    - Copy & Paste & Replace footer.html (seazit_app/project/templates/includes/footer.html)
-    - Check if this line exists in seazit_app/project/templates/base.html
+    - Copy & Paste & Replace footer.html (seazitdiver/project/templates/includes/footer.html)
+    - Check if this line exists in seazitdiver/project/templates/base.html
   ```
          {% block footer %}
          {% include 'includes/footer.html' %}
          {% endblock footer %} 
   ```
 - header.txt
-    - Copy & Paste & Replace header.html (seazit_app/project/templates/includes/header.html)
-    - Check if this line exists in seazit_app/project/templates/base.html
+    - Copy & Paste & Replace header.html (seazitdiver/project/templates/includes/header.html)
+    - Check if this line exists in seazitdiver/project/templates/base.html
   ```
          {% block header %}
          {% include 'includes/header.html' %}
          {% endblock header %} 
   ```
 - css folder:
-    - Copy & Paste & Replace ntpweb-shared.css (seazit_app/project/static_seazit/css/ntpweb-shared.css)
-    - Check if this line exists in seazit_app/project/templates/base.html
+    - Copy & Paste & Replace ntpweb-shared.css (seazitdiver/project/static_seazit/css/ntpweb-shared.css)
+    - Check if this line exists in seazitdiver/project/templates/base.html
   ```
          <link href="{{STATIC_URL}}css/ntpweb-shared.css"
           rel="stylesheet" type="text/css"/>
@@ -65,8 +65,8 @@ js folder files are used for updating javascript necessary scripts (such as jque
 example, we have 2 methods to do that with given files, I personally suggest to use method 1.
 
 1. First method: only update ntpweb-shared.js, this file contain jquery updated content.
-    - a. Copy & Paste & Replace ntpweb-shared.js (seazit_app/project/static_seazit/js/ntpweb-shared.js)
-    - b. Checkout this file seazit_app/project/templates/base.html, check if ntpweb-shared.js file is script
+    - a. Copy & Paste & Replace ntpweb-shared.js (seazitdiver/project/static_seazit/js/ntpweb-shared.js)
+    - b. Checkout this file seazitdiver/project/templates/base.html, check if ntpweb-shared.js file is script
       implemented. Such as this code:
       ```
       <script src="{{STATIC_URL}}js/ntpweb-shared.js"
@@ -74,15 +74,15 @@ example, we have 2 methods to do that with given files, I personally suggest to 
       ```
 2. Second method: update ntpweb-shared-minimal.js and element folder. ntpweb-shared-minimal.js does not contain jquery
    script, so you need to script jquery files.
-    - a. Copy & Paste & Replace ntpweb-shared-minimal.js (seazit_app/project/static_seazit/js/ntpweb-shared-minimal.js)
-    - b. Checkout this file seazit_app/project/templates/base.html, check if ntpweb-shared.js file is script
+    - a. Copy & Paste & Replace ntpweb-shared-minimal.js (seazitdiver/project/static_seazit/js/ntpweb-shared-minimal.js)
+    - b. Checkout this file seazitdiver/project/templates/base.html, check if ntpweb-shared.js file is script
       implemented. Such as this code:
       ```
       <script src="{{STATIC_URL}}js/ntpweb-shared-minimal.js"
       type='text/javascript'></script>
       ```
     - c. Copy & Paste & Replace /jquery-3.7.0 and /jquery-ui-1.13.2 into this directory:
-      seazit_app/project/static_seazit/js/
+      seazitdiver/project/static_seazit/js/
 
 If you check those 2 methods, you will find out they are different method and can not work together. Right.  They can not.
 So keep in
@@ -117,7 +117,7 @@ For example. Below not working, because app can not find this file.
 `
     background-image: url(/sites/default/files/images/template/logo_bg.png);
 `
-Then I downloaded this file, and saved it in project directory (/seazit_app/project/static_seazit/img/seazit/logo_bg.png)). Eventually changed it in css code, it works.
+Then I downloaded this file, and saved it in project directory (/seazitdiver/project/static_seazit/img/seazit/logo_bg.png)). Eventually changed it in css code, it works.
 `
     background-image: url(../img/seazit/logo_bg.png);
 

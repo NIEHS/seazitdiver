@@ -26,7 +26,7 @@ Before running deploy tasks locally:
 - Read access to the `deploy-seazit` repository (holds `secrets.json` and
   per-environment `.env.*` templates).
 - SSH access to the target server (staging, production, test, or vm_prod).
-- A local checkout of `seazit_app` at the path defined in `secrets.json`
+- A local checkout of `seazitdiver` at the path defined in `secrets.json`
   (`repo_dir`). Webpack builds run locally and are uploaded to the server as
   part of the Django rebuild.
 
@@ -100,7 +100,7 @@ Tasks are grouped by module inside `deploy-seazit/conf/`:
     ```
 
 - **JavaScript is compiled locally**, not on the server. Make sure your local
-  `seazit_app` checkout is on the same branch and commit you intend to deploy.
+  `seazitdiver` checkout is on the same branch and commit you intend to deploy.
 
 - **Redis password** on `vm_prod` must be set manually the first time the
   redis container is created. See `deploy-seazit/readme.md` for the exact

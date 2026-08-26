@@ -8,19 +8,16 @@ if [ -f ./bin/dev.local.sh ]; then
    exit
 fi
 
-# create the session to be used
-tmux new-session -d -s seazit_app
+# create the session with the first pane (will become pane 0 = npm)
+tmux new-session -d -s seazitdiver
 
-# split the windows (horizontal split, then split the right pane vertically)
-tmux split-window -h
-tmux select-pane -t 1
+# split vertically to create the second pane (pane 1 = django)
 tmux split-window -v
 
 # run commands
-tmux send-keys -t 0 "conda activate seazit" enter
-tmux send-keys -t 1 "conda activate seazit && cd project && npm start" enter
-tmux send-keys -t 2 "conda activate seazit && cd project && python manage.py runserver " enter
+tmux send-keys -t 0 "conda activate seazit && cd project && npm start" enter
+tmux send-keys -t 1 "conda activate seazit && cd project && python manage.py runserver" enter
 
-# attach to shell
+# attach to session
 tmux select-pane -t 0
-tmux attach-session
+tmux attach-session -t seazitdiver
