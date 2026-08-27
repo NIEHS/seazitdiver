@@ -4,7 +4,7 @@
 ![Node](https://img.shields.io/badge/Node-22.5.1-green?logo=node.js)
 ![Yarn](https://img.shields.io/badge/Yarn-4.3.1-2C8EBB?logo=yarn)
 ![Django](https://img.shields.io/badge/Django-4.2.18-092E20?logo=django)
-![License](https://img.shields.io/badge/License-TBD-lightgrey)
+[![License](https://img.shields.io/badge/License-Public%20Domain-brightgreen)](LICENSE.md)
 
 ---
 

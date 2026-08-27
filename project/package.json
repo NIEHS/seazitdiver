@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "add-me",
     "repository": "add-me",
-    "license": "add-me",
+    "license": "SEE LICENSE IN ../LICENSE.md",
     "scripts": {
         "clean": "./node_modules/.bin/rimraf ./static_seazit/bundles/* && ./node_modules/.bin/rimraf ./webpack-stats.json",
         "build": "npm run clean && npm run build:production",
