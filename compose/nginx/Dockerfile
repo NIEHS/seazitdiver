@@ -1,4 +1,4 @@
-FROM nginx:stable-alpine
+FROM nginx:mainline-alpine
 
 RUN apk --no-cache upgrade && \
     # Install curl without specifying the version
@@ -19,16 +19,16 @@ RUN apk --no-cache add \
     libssh2-dev \
     linux-headers
 
-# Download, compile, and install libcurl 8.9.1
+# Download, compile, and install libcurl 8.21.0
 
-RUN curl -LO https://curl.se/download/curl-8.9.1.tar.gz && \
-    tar -xzf curl-8.9.1.tar.gz && \
-    cd curl-8.9.1 && \
+RUN curl -LO https://curl.se/download/curl-8.21.0.tar.gz && \
+    tar -xzf curl-8.21.0.tar.gz && \
+    cd curl-8.21.0 && \
     ./configure --with-ssl && \
     make && \
     make install && \
     cd .. && \
-    rm -rf curl-8.9.1 curl-8.9.1.tar.gz
+    rm -rf curl-8.21.0 curl-8.21.0.tar.gz
 
 # Add SSL certificates and .htpasswd file
 ADD ./ssl /etc/nginx/ssl
