@@ -1,0 +1,25 @@
+.compact-checkgroup .control-label,
+.compact-checkgroup .form-group {
+  margin: 0;
+}
+
+.compact-checkgroup h4 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.compact-checkgroup > div:first-child h4 {
+  margin-top: 0;
+}
+
+.compact-checkgroup .checkbox {
+  margin-bottom: 3px;
+}
+/*
+.sidebar a {
+  color: black !important;
+}
+
+.content-wrapper{
+  overflow-x: auto;
+}
+*/
