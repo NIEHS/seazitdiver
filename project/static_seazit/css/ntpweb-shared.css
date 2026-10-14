@@ -185,17 +185,6 @@ template {
     display: none;
 }
 
-[data-whatinput='mouse'] *,
-[data-whatinput='mouse'] :focus,
-[data-whatinput='touch'] *,
-[data-whatinput='touch'] :focus,
-[data-whatintent='mouse'] *,
-[data-whatintent='mouse'] :focus,
-[data-whatintent='touch'] *,
-[data-whatintent='touch'] :focus {
-    outline: 0;
-}
-
 [draggable='false'] {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -7040,6 +7029,11 @@ header#top .lowercase {
 footer#footer .indent,
 header#top .indent {
     margin-left: 2rem;
+}
+
+footer#footer .indent-short,
+header#top .indent-short {
+    margin-left: 1rem;
 }
 
 footer#footer .italic,
