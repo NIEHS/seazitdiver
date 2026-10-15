@@ -1,6 +1,6 @@
 # web
 Django==4.2.18
-djangorestframework==3.14.0 # zw added
+djangorestframework==3.17.2 # zw added
 six==1.17.0
 coreapi==2.3.3  # Remove or replace if not needed
 drf-yasg==1.21.8
