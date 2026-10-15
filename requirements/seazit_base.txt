@@ -1,5 +1,5 @@
 # web
-Django==4.2.18
+Django==5.2.16
 djangorestframework==3.14.0 # zw added
 six==1.17.0
 coreapi==2.3.3  # Remove or replace if not needed
