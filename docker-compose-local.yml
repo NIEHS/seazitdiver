@@ -1,0 +1,63 @@
+# Run SEAZIT locally (always pass -f, like the other docker-compose-*.yml files):
+#
+#   docker compose -f docker-compose-local.yml up --build
+#   open http://localhost:8000
+#
+# On first start the db container restores the SEAZIT dump from
+# local_data/data.dump (or downloads SEAZIT_DUMP_URL if that file is missing).
+# See local_data/README.md.
+# To reload it:
+#   docker compose -f docker-compose-local.yml down -v
+#   docker compose -f docker-compose-local.yml up --build
+#
+# Server deployments use docker-compose-production.yml / -vm_prod.yml instead.
+
+name: seazit
+
+services:
+  db:
+    build:
+      context: compose/local
+      dockerfile: db.Dockerfile   # postgres:16 (same major as source DB 16.2) + curl
+    image: seazit-db:16
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-dev_seazit}
+      POSTGRES_USER: ${POSTGRES_USER:-seazit}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-seazit}
+      SEAZIT_DUMP_URL: ${SEAZIT_DUMP_URL:-https://github.com/NIEHS/seazitdiver/releases/download/data-2026-10-20/data.dump}
+      SEAZIT_DUMP_SHA256: ${SEAZIT_DUMP_SHA256:-1706cb548ea8cf7293a343a99be588f1115bf19618b7802d72fffdaf65a73859}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./local_data:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      # -h 127.0.0.1: during the first-start restore Postgres only listens on a
+      # unix socket, so this stays "unhealthy" until the restore has finished
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 30m
+      start_interval: 5s
+    restart: unless-stopped
+
+  django:
+    build:
+      context: .
+      dockerfile: compose/local/Dockerfile
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_PORT: "5432"
+      POSTGRES_DB: ${POSTGRES_DB:-dev_seazit}
+      POSTGRES_USER: ${POSTGRES_USER:-seazit}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-seazit}
+      DJANGO_DEBUG: ${DJANGO_DEBUG:-False}
+      SEAZIT_PORT: ${SEAZIT_PORT:-8000}
+    ports:
+      - "127.0.0.1:${SEAZIT_PORT:-8000}:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  db_data:

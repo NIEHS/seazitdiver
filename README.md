@@ -39,6 +39,34 @@ The application combines a Django REST backend with a React/Webpack frontend, ba
 
 ---
 
+## Quick Start with Docker (no local install)
+
+**Full step-by-step guide (Windows, macOS, Linux): [DOCKER.md](DOCKER.md)**
+
+Only Docker is required — no Python, Node, conda or database setup.
+
+```bash
+git clone -b seazit-docker-local https://github.com/NIEHS/seazitdiver.git
+cd seazitdiver
+docker compose -f docker-compose-local.yml up --build
+```
+
+Open <http://localhost:8000/seazit/app/>. The first start builds the images (~5–15 minutes) and restores
+the SEAZIT database from `local_data/data.dump` (downloaded automatically from the
+[GitHub Release](https://github.com/NIEHS/seazitdiver/releases/tag/data-2026-10-20) if missing, 106 MB).
+Later starts take seconds.
+
+| Container | Purpose |
+|-----------|---------|
+| `db`      | PostgreSQL 16 (`compose/local/db.Dockerfile`). On first start it restores the SEAZIT data (see [`local_data/`](local_data/README.md)). |
+| `django`  | SEAZIT app (gunicorn) with JavaScript bundles compiled during the image build (`compose/local/Dockerfile`). |
+
+Always pass `-f docker-compose-local.yml`; see [DOCKER.md](DOCKER.md) for everyday commands,
+updating and troubleshooting. Server deployments do not use these files (they use
+`docker-compose-production.yml` via `NIEHS/deploy-seazit`).
+
+---
+
 ## Prerequisites
 
 Install the following before setting up the project:

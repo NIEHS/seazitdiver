@@ -14,25 +14,26 @@ fi
 export DATABASE_URL=postgres://$POSTGRES_USER:$POSTGRES_PASSWORD@$POSTGRES_SERVER_IP:$PORT/$POSTGRES_USER
  
 function postgres_ready(){
-/opt/conda/envs/seazit/bin/python << END
+/opt/conda/envs/seazit/bin/python << 'END'
+import os
 import sys
 import psycopg2
 
 try:
-    print('Postgres user')
-    
-    #conn = psycopg2.connect(user = "$POSTGRES_USER",password = "ntp_group",host = "10.98.105.92",port = "5432", database = "dev_seazit")
-    conn = psycopg2.connect(user = "dtt_user",password = "dtt_user123!",host = "ehsdtt031535.niehs.nih.gov",port = "5432", database = "dev_seazit")
+    # connection values come from the server .env file
+    # (deploy-seazit/templates/.env.<env>), same values Django uses
+    conn = psycopg2.connect(
+        user=os.environ['POSTGRES_USER'],
+        password=os.environ['POSTGRES_PASSWORD'],
+        host=os.environ['POSTGRES_SERVER_IP'],
+        port=os.environ.get('PORT', '5432'),
+        dbname=os.environ['POSTGRES_DBNAME'],
+    )
     cur = conn.cursor()
     print('PostgreSQL database version:')
     cur.execute('SELECT version()')
-    print (cur.fetchone())
+    print(cur.fetchone())
     conn.close()
-    # $POSTGRES_USER=sandbox
-    # $POSTGRES_PASSWORD=iiUTo-GUTmYFMSR914F_8dY9urKpHKZZHzWLpeXJIt4
-    # $DB_SERVER=NONE
-    #conn = psycopg2.connect(dbname="$POSTGRES_USER", user="$POSTGRES_USER", password="$POSTGRES_PASSWORD", host="$DB_SERVER")
-     
 except psycopg2.OperationalError:
     sys.exit(-1)
 sys.exit(0)
@@ -75,10 +76,13 @@ until postgres_ready; do
   sleep 1
 done
 
-until redis_ready; do
-  >&2 echo "Redis is unavailable - sleeping"
-  sleep 1
-done
+# only wait for redis when it is configured (servers set it in .env)
+if [ -n "$REDIS_CONNECTION_STRING" ]; then
+  until redis_ready; do
+    >&2 echo "Redis is unavailable - sleeping"
+    sleep 1
+  done
+fi
 
 until python_ready; do
   >&2 echo "python_ready is unavailable - sleeping"

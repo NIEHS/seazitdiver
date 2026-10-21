@@ -1,2 +1,12 @@
 # Set line endings to LF for specific file types
 *.css text eol=lf
+
+# Docker: scripts and compose files run inside Linux containers - keep LF
+# even when cloned on Windows (CRLF breaks bash: "\r: command not found")
+*.sh text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+Dockerfile* text eol=lf
+
+# database dumps
+*.dump binary

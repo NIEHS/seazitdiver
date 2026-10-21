@@ -1,0 +1,40 @@
+# Keep the Docker build context small and free of local/secret files.
+
+# VCS / editors
+.git
+.gitignore
+.gitattributes
+.idea
+.vscode
+**/.DS_Store
+*.swp
+
+# database dump is mounted into the db container, not baked into the app image
+local_data/
+
+# javascript (rebuilt inside the image)
+project/node_modules
+project/node_modules_back
+project/.yarn/cache
+project/.yarn/install-state.gz
+project/static_seazit/bundles
+project/webpack-stats.json
+
+# python caches
+**/__pycache__
+**/*.py[cod]
+.pytest_cache
+.mypy_cache
+.ipynb_checkpoints
+
+# local settings / secrets / logs / runtime output
+project/main/settings/local.py
+.env
+.env.*
+*.log
+seazitdiver.log*
+public/
+
+# not needed to run the app
+docs/_build
+shiny
