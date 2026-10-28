@@ -52,7 +52,7 @@ Django (port 8000)
 ## 3. Directory Structure
 
 ```
-seazit_app/
+seazitdiver/
 ├── project/                    # Django project root
 │   ├── manage.py
 │   ├── main/                   # Core Django configuration

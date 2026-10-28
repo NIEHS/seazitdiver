@@ -50,8 +50,8 @@ project/webpack-stats.json
 
 # production environment
 *.log
-seazit_app.log
-seazit_app.log.*
+seazitdiver.log
+seazitdiver.log.*
 public/
 .env
 .idea

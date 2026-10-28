@@ -3,7 +3,7 @@ import QualityControlMain from './containers/QualityControlMain';
 import DoseResponseMain from './containers/DoseResponseMain';
 import BmdByLabMain from './containers/BmdByLabMain';
 import IntegrativeAnalysesMain from './containers/IntegrativeAnalysesMain';
-import SeazitApp from './containers/SeazitApp';
+import Seazitdiver from './containers/Seazitdiver';
 
 import { insertIntoDom } from './shared';
 
@@ -12,7 +12,7 @@ const renderDatasets = (el) => insertIntoDom(DatasetsMain, el),
     renderBmdByLab = (el) => insertIntoDom(BmdByLabMain, el),
     renderDoseResponse = (el) => insertIntoDom(DoseResponseMain, el),
     renderIntegrativeAnalyses = (el) => insertIntoDom(IntegrativeAnalysesMain, el),
-    renderSeazitApp = (el) => insertIntoDom(SeazitApp, el);
+    renderSeazitApp = (el) => insertIntoDom(Seazitdiver, el);
 
 export {
     renderDatasets,

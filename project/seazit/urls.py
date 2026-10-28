@@ -24,13 +24,13 @@ urlpatterns = [
 
     # Legacy redirects for Datasets and QC — now handled inside the SPA
     path("dataset/", RedirectView.as_view(url="/seazit/app/#dataset", permanent=False), name="dataset"),
-    path("quality-control/", RedirectView.as_view(url="/seazit/app/#qc", permanent=False), name="qc"),
+    path("quality-control/", RedirectView.as_view(url="/seazit/app/#quality-control", permanent=False), name="qc"),
 
     # SPA shell — serves all 3 React tabs (Concentration Response, BMC by Dataset, Integrative Analyses)
-    path("app/", views.SeazitApp.as_view(), name="seazit_app"),
+    path("app/", views.Seazitdiver.as_view(), name="seazitdiver"),
 
     # Legacy redirects — keep old URLs working (bookmarks, external links)
-    path("seazit_cr/", RedirectView.as_view(url="/seazit/app/#cr", permanent=False), name="seazit_cr"),
-    path("seazit_bmcByLab/", RedirectView.as_view(url="/seazit/app/#bmc", permanent=False), name="seazit_bmcByLab"),
-    path("seazit_integrative/", RedirectView.as_view(url="/seazit/app/#int", permanent=False), name="seazit_integrative"),
+    path("seazit_cr/", RedirectView.as_view(url="/seazit/app/#seazit_cr", permanent=False), name="seazit_cr"),
+    path("seazit_bmcByLab/", RedirectView.as_view(url="/seazit/app/#seazit_bmcByLab", permanent=False), name="seazit_bmcByLab"),
+    path("seazit_integrative/", RedirectView.as_view(url="/seazit/app/#seazit_integrative", permanent=False), name="seazit_integrative"),
 ]

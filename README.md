@@ -4,7 +4,7 @@
 ![Node](https://img.shields.io/badge/Node-22.5.1-green?logo=node.js)
 ![Yarn](https://img.shields.io/badge/Yarn-4.3.1-2C8EBB?logo=yarn)
 ![Django](https://img.shields.io/badge/Django-4.2.18-092E20?logo=django)
-![License](https://img.shields.io/badge/License-TBD-lightgrey)
+[![License](https://img.shields.io/badge/License-Public%20Domain-brightgreen)](LICENSE.md)
 
 ---
 
@@ -56,8 +56,8 @@ Install the following before setting up the project:
 
 ```bash
 cd ~/dev
-git clone https://gitlab.niehs.nih.gov/ods/seazit_app.git
-cd seazit_app
+git clone https://github.com/NIEHS/seazitdiver.git
+cd seazitdiver
 ```
 
 ### 2. Create and activate the conda environment
@@ -120,7 +120,7 @@ Sync the database and create an admin user:
 
 ```bash
 conda activate seazit
-cd ~/dev/seazit_app/project
+cd ~/dev/seazitdiver/project
 python manage.py migrate
 python manage.py createsuperuser
 ```
@@ -137,7 +137,7 @@ Two processes must run simultaneously: the Django application server and the Web
 
 ```bash
 conda activate seazit
-cd ~/dev/seazit_app/project
+cd ~/dev/seazitdiver/project
 python manage.py runserver 8000
 ```
 
@@ -148,7 +148,7 @@ python manage.py runserver 8000
 
 ```bash
 conda activate seazit
-cd ~/dev/seazit_app/project
+cd ~/dev/seazitdiver/project
 npm start
 ```
 
@@ -157,7 +157,7 @@ Navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to view the applica
 **Optional — Start everything with tmux:**
 
 ```bash
-cd ~/dev/seazit_app
+cd ~/dev/seazitdiver
 make dev
 ```
 
@@ -292,7 +292,7 @@ touch ./etc/conda/deactivate.d/env_vars.sh
 In `./etc/conda/activate.d/env_vars.sh`:
 
 ```bash
-cd ~/dev/seazit_app
+cd ~/dev/seazitdiver
 ```
 
 In `./etc/conda/deactivate.d/env_vars.sh`:

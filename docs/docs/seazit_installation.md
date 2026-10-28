@@ -9,12 +9,12 @@ Installing the SEAZIT application requires installation both a webserver and a d
 
 ### The application environment (python + javascript)
 
-Installation instructions described below. Note that the instructions assume the NTP SEAZIT will be installed to ``~/dev/seazit_app`` and a conda environment will be created which is named ``SEAZIT``; both of these settings can be changed but instructions will need to be updated:
+Installation instructions described below. Note that the instructions assume the NTP SEAZIT will be installed to ``~/dev/seazitdiver`` and a conda environment will be created which is named ``SEAZIT``; both of these settings can be changed but instructions will need to be updated:
 
 ```bash
 cd ~/dev
  
-git clone https://gitlab.niehs.nih.gov/ods/seazit_app.git 
+git clone https://github.com/NIEHS/seazitdiver.git 
 
 cd ./SEAZIT
 conda env create -f conda.yml
@@ -222,11 +222,11 @@ conda remove --name seazit --all
 
  yarn -v
 4.3.1
-(seazit) ALMBP02246215:seazit_app noltesz$ npm -v
+(seazit) ALMBP02246215:seazitdiver noltesz$ npm -v
 10.8.2
-(seazit) ALMBP02246215:seazit_app noltesz$ node -v
+(seazit) ALMBP02246215:seazitdiver noltesz$ node -v
 v22.5.1
-(seazit) ALMBP02246215:seazit_app noltesz$
+(seazit) ALMBP02246215:seazitdiver noltesz$
 
 update local npm version
 npm update -g npm

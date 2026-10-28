@@ -9,12 +9,20 @@ import ResourcesMain from './ResourcesMain';
 
 // Tab key constants — match the URL hash values
 const TAB_ABOUT = 'about';
-const TAB_CR = 'cr';
-const TAB_BMC = 'bmc';
-const TAB_INT = 'int';
+const TAB_CR = 'seazit_cr';
+const TAB_BMC = 'seazit_bmcByLab';
+const TAB_INT = 'seazit_integrative';
 const TAB_DATASET = 'dataset';
-const TAB_QC = 'qc';
+const TAB_QC = 'quality-control';
 const TAB_RESOURCES = 'resources';
+
+// Legacy hash aliases — preserve backward-compat with old bookmarks (#cr, #bmc, #int, #qc)
+const LEGACY_HASH_ALIASES = {
+    'cr': TAB_CR,
+    'bmc': TAB_BMC,
+    'int': TAB_INT,
+    'qc': TAB_QC,
+};
 
 const VALID_TABS = [TAB_ABOUT, TAB_CR, TAB_BMC, TAB_INT, TAB_DATASET, TAB_QC, TAB_RESOURCES];
 
@@ -37,10 +45,11 @@ const SHINY_URLS = {
 
 function getTabFromHash() {
     const hash = window.location.hash.replace('#', '');
+    if (LEGACY_HASH_ALIASES[hash]) return LEGACY_HASH_ALIASES[hash];
     return VALID_TABS.includes(hash) ? hash : TAB_ABOUT;
 }
 
-class SeazitApp extends React.Component {
+class Seazitdiver extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -167,4 +176,4 @@ class SeazitApp extends React.Component {
     }
 }
 
-export default SeazitApp;
+export default Seazitdiver;
