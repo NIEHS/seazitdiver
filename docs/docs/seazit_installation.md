@@ -9,7 +9,7 @@ Installing the SEAZIT application requires installation both a webserver and a d
 
 ### The application environment (python + javascript)
 
-Installation instructions described below. Note that the instructions assume the NTP SEAZIT will be installed to ``~/dev/seazitdiver`` and a conda environment will be created which is named ``SEAZIT``; both of these settings can be changed but instructions will need to be updated:
+Installation instructions described below. Note that the instructions assume SEAZIT-DIVER will be installed to ``~/dev/seazitdiver`` and a conda environment will be created which is named ``SEAZIT``; both of these settings can be changed but instructions will need to be updated:
 
 ```bash
 cd ~/dev
@@ -66,11 +66,11 @@ You can save your password in the file `~/.pgpass` instead of having to re-enter
 
 Ensure that your settings in `./project/main/settings/local.py` allow you test connect to the database. Now, sync database state with python state:
 
-**option 2.** Database connect to NTP dev server (need vpn connection)
+**option 2.** Connect to the NIEHS development database (VPN required)
 
 ```bash
 --Detail coming soon
---see NTP database admin
+-- contact the SEAZIT-DIVER maintainers
 ```
 
 ```bash
@@ -109,7 +109,7 @@ cp SEAZIT.sql to your server
 psql -h localhost -p 5433 -d sandbox -U sandbox -f SEAZIT.sql
 ```
 
-Navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/), and you should be able to see the NTP SEAZIT homepage!
+Navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/), and you should be able to see the SEAZIT-DIVER homepage!
 
 For convenience, a Makefile is available which starts a developer environment in one shell using [tmux](https://tmux.github.io/). The Makefile is designed such that if a local version of the tmux configuration is present, it is called instead, which allows more user-specific customization of the application.
 

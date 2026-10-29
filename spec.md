@@ -1,16 +1,16 @@
-# NTP SEAZIT — Technical Specification
+# SEAZIT-DIVER — Technical Specification
 
-**Version:** 2026-07-23
-**Project:** NTP SEAZIT
-**Organization:** National Toxicology Program (NTP), NIEHS
+**Version:** 2026-10-29
+**Project:** SEAZIT-DIVER (Systematic Evaluation of the Application of Zebrafish in Toxicology – Data Integration and Visualization Enabling Resource)
+**Organization:** Division of Translational Toxicology (DTT), NIEHS
 
 ---
 
 ## 1. Overview
 
-NTP SEAZIT is a full-stack Django web application designed as a rapid prototyping and data tooling platform for the National Toxicology Program at NIEHS. It provides a unified scaffold for building internal data analysis tools, REST APIs, scientific visualizations, and experimental features without requiring a new deployment environment for each project.
+SEAZIT-DIVER is a full-stack Django + React web application for analyzing, comparing, and visualizing intra- and inter-laboratory zebrafish developmental toxicity data from the SEAZIT Interlaboratory Study. It provides tabs for study design, quality control, concentration-response curves, benchmark concentration (BMC) ranking by dataset, and integrative cross-assay/cross-laboratory comparison.
 
-The application is intentionally structured to be extensible: new Django apps can be registered and new React-based frontend components integrated with minimal configuration. It serves both internal analysts and developers who need to build, test, and iterate on NTP data workflows quickly.
+The Django backend exposes a REST API over PostgreSQL materialized views (`mvw_seazit_*`); the React frontend renders the interactive visualizations; the Dataset and Quality control tabs are R Shiny applications embedded as iframes.
 
 ---
 

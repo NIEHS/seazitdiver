@@ -270,4 +270,4 @@ MARKDOWN_DEUX_STYLES = {
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_URLS_REGEX = r'/(tox21|seazit)/api/.*$'
+CORS_URLS_REGEX = r'/seazit/api/.*$'

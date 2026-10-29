@@ -1,22 +1,36 @@
-# NTP SEAZIT
+# SEAZIT-DIVER
+
+**S**ystematic **E**valuation of the **A**pplication of **Z**ebrafish in **T**oxicology – **D**ata **I**ntegration and **V**isualization **E**nabling **R**esource
 
 ![Python](https://img.shields.io/badge/Python-3.8-blue?logo=python)
 ![Node](https://img.shields.io/badge/Node-22.5.1-green?logo=node.js)
 ![Yarn](https://img.shields.io/badge/Yarn-4.3.1-2C8EBB?logo=yarn)
 ![Django](https://img.shields.io/badge/Django-4.2.18-092E20?logo=django)
-![License](https://img.shields.io/badge/License-TBD-lightgrey)
+![License](https://img.shields.io/badge/License-CC0%201.0-lightgrey)
+
+**Current version:** 2026-10-29 (see [CHANGELOG](CHANGELOG.md)) · **How to cite:** see [CITATION.cff](CITATION.cff)
 
 ---
 
 ## Overview
 
-NTP SEAZIT is a Django-based web application developed for the National Toxicology Program (NTP) at NIEHS. It serves as a rapid prototyping and development platform for new data tooling ideas, supporting internal data analysis workflows, scientific visualizations, and tooling experiments across NTP research programs.
+SEAZIT-DIVER is a web application for analyzing, comparing, and visualizing intra- and inter-laboratory zebrafish developmental toxicity data from the SEAZIT Interlaboratory Study, developed by the Division of Translational Toxicology (DTT) at NIEHS. Comparisons are organized on tabs:
 
-The application combines a Django REST backend with a React/Webpack frontend, backed by a PostgreSQL database. It is designed to be extensible — new apps and tools can be added quickly within the existing scaffold, making it a central hub for iterative NTP data tool development.
+| Tab | Content | Implementation |
+|-----|---------|----------------|
+| About | Study overview | React |
+| Dataset | Experimental design, test substances, protocols, phenotype ontology | R Shiny (iframe) |
+| Quality control | Plate- and assay-level QC | R Shiny (iframe) |
+| Concentration response | Chemical-specific concentration-response curves | React + Django API |
+| BMC by dataset | Benchmark concentration (BMC) ranking per lab/assay (Activity / Specificity) | React + Django API |
+| Integrative analyses | Comparison across assays and laboratories | React + Django API |
+| Resources | Publications and contributors | React |
 
-- **Production site:** https://seazit.dtt.niehs.nih.gov/
-- **Staging site:** https://ehssv-falcon02.niehs.nih.gov/
-- **Deployment tooling:** `NIEHS/deploy-seazit` (private; see [Deploying](docs/docs/deploying.md))
+The application combines a Django REST backend with a React/Webpack frontend, backed by a PostgreSQL database.
+
+- **Public site:** https://seazit.dtt.niehs.nih.gov/
+
+> **Scope of this repository.** This repository contains only SEAZIT-DIVER. Applications from the earlier NTP sandbox this codebase was derived from (tox21, neurotox, CEBS, fiveday, drugmatrix, IVIVE, job runner) have been removed.
 
 ---
 
@@ -31,7 +45,7 @@ The application combines a Django REST backend with a React/Webpack frontend, ba
 | Bundler        | Webpack                              | 5.x      |
 | Package mgr    | Yarn                                 | 4.3.1    |
 | Runtime        | Node.js                              | 22.5.1   |
-| Database       | PostgreSQL (NTP dev server via VPN)  | —        |
+| Database       | PostgreSQL                           | —        |
 | Data / Science | numpy, pandas, scipy, scikit-learn   | —        |
 | Visualization  | matplotlib, plotly, seaborn          | —        |
 | Docs           | MkDocs                               | 1.6.1    |
@@ -98,11 +112,11 @@ yarn install
 
 ## Database Setup
 
-### Connect to NTP Dev Server (VPN required)
+> **External users:** a public, schema-matched sample database and a self-contained Docker Compose setup are in progress (see [CHANGELOG](CHANGELOG.md) for status). Until then, the full SEAZIT dataset is hosted on an NIEHS-internal PostgreSQL server, and the steps below require NIEHS network (VPN) access.
 
-Local development connects to the NTP PostgreSQL development database. An active NIEHS VPN connection is required. Contact the NTP database administrator for credentials and connection details.
+### Connect to the NIEHS development database (VPN required)
 
-Configure the connection in `project/main/settings/local.py` (copied from `local.example.py` in Installation step 4). Example:
+Configure the connection in `project/main/settings/local.py` (copied from `local.example.py` in Installation step 4). Contact the SEAZIT-DIVER maintainers for credentials. Example:
 
 ```python
 DATABASES['default'].update({
@@ -125,7 +139,7 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-This option is only available to internal NIEHS/NTP staff.
+The SEAZIT data tables and materialized views (`mvw_seazit_*`) are not managed by Django migrations (`managed = False`); `migrate` only creates Django's own auth/admin tables.
 
 ---
 
@@ -172,17 +186,6 @@ cp ./bin/dev.sh ./bin/dev.local.sh
 
 ---
 
-## Loading Sample Data
-
-To load a SEAZIT database snapshot:
-
-```bash
-# Copy the SQL dump to your machine, then:
-psql -h localhost -p 5433 -d sandbox -U sandbox -f SEAZIT.sql
-```
-
----
-
 ## Useful Make Commands
 
 | Command          | Description                                    |
@@ -216,9 +219,13 @@ mmdc -t neutral -C ./diagrams/mmd.css \
 
 ## Deployment
 
-Deployment is managed through the private `NIEHS/deploy-seazit` repository, which contains Fabric tasks that rebuild and start the individual Docker containers on staging, production, and VM production servers.
+The NIEHS production deployment is managed through the private `NIEHS/deploy-seazit` repository, which contains Fabric tasks that rebuild and start the Docker containers on the NIEHS staging and production servers. See [`docs/docs/deploying.md`](docs/docs/deploying.md) for an overview.
 
-See [`docs/docs/deploying.md`](docs/docs/deploying.md) for an overview of the deployment workflow, environments, and common commands. Full details (including credentials and hostnames) live in `deploy-seazit/readme.md`.
+---
+
+## License and citation
+
+SEAZIT-DIVER is released under [CC0 1.0 Universal](LICENSE) (public domain dedication). If you use SEAZIT-DIVER, please cite it using the metadata in [CITATION.cff](CITATION.cff).
 
 ---
 

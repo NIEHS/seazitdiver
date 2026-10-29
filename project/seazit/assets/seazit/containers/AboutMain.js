@@ -161,7 +161,7 @@ class AboutMain extends React.Component {
                             Kristen Ryan (
                             <a href="mailto:kristen.ryan@nih.gov">kristen.ryan@nih.gov</a>).
                         </p>
-                        <p>Current version: SEAZIT-DIVER (2026-07-23).</p>
+                        <p>Current version: SEAZIT-DIVER (2026-10-29).</p>
                     </div>
                 </div>
             </div>

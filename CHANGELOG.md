@@ -1,10 +1,29 @@
 # Changelog
 
-All notable changes to NTP SEAZIT are documented in this file. Versions are date-based (`YYYY-MM-DD`), newest first.
+All notable changes to SEAZIT-DIVER are documented in this file. Versions are date-based (`YYYY-MM-DD`), newest first. Each release is tagged in git as `vYYYY-MM-DD`.
 
 ---
 
-## [2026-07-23] — Current
+## [2026-10-29] — Current
+
+### Fixed
+- **BMC by dataset tab:** per-substance endpoint selection in `RankedBarchartHandler.js` used `_.min(iteratee)`, which in Lodash 4 ignores the iteratee and returns the first row. Replaced with `_.minBy`. Activity-mode non-mortality BMCs are unchanged (an upstream sort masked the bug); the Mortality BMC column (both modes) and Specificity-mode non-mortality BMCs now correctly show each substance's lowest BMC, and substances active on any selected endpoint are no longer shown as "-" in Specificity mode.
+
+### Changed
+- Rebranded repository, docs, admin site, and specification from "NTP SEAZIT" to **SEAZIT-DIVER**; README rewritten around SEAZIT-DIVER tabs.
+- Removed legacy NTP sandbox material: docs pages for CEBS, neurotox, the 2017 workshop, and the GitLab-era contributing guide; legacy tox21 schema image; `tox21` from `CORS_URLS_REGEX`; legacy apps from `docs/dbdocs.sh` and `docs/mkdocs.yml`.
+- Updated header/footer to the 2026-10 NTP shared header/footer (2026-10-14).
+- nginx base image upgraded to `nginx:mainline-alpine`, libcurl bumped to 8.21.0, `server_tokens off` (2026-08-27).
+- Renamed `SeazitApp` view/template/container to `Seazitdiver` (2026-08-26).
+- Added `shiny/` placeholders for the Dataset and Quality control Shiny apps (2026-08-06).
+
+### Added
+- `LICENSE`: CC0 1.0 Universal.
+- `CITATION.cff` for software citation and Zenodo DOI minting.
+
+---
+
+## [2026-07-23]
 
 - Redrafted `README.md` with comprehensive installation, database setup, dev server, testing, and troubleshooting documentation
 - Added `spec.md` covering technical architecture, directory structure, backend/frontend stack, database configuration, auxiliary services (RServe), scientific libraries, and environment configuration

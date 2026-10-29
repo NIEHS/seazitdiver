@@ -1,30 +1,23 @@
-# Shiny application webserver
+# Shiny applications
 
 ## Purpose
 
-Many scientists at the institute analysis data using the R language and therefore prefer to develop application using R; a common application framework in the R language is [Shiny](https://shiny.rstudio.com/). The shiny web server is designed to host these applications to enable allowing creation of new applications easily.
+Two SEAZIT-DIVER tabs are implemented in R Shiny and embedded in the Django application as iframes:
 
-## Application details
+- **Dataset tab** - experimental design, test substances, lab-specific protocols, and phenotype ontology mapping. Source placeholder: `shiny/seazit_datasets/`. Currently served from [https://rstudio.niehs.nih.gov/seazit_dataset/](https://rstudio.niehs.nih.gov/seazit_dataset/).
+- **Quality control tab** - plate-level and assay-level quality-control details on normalized response and variance in assay control response. Source placeholder: `shiny/seazit_qc/`. Currently served from [https://rstudio.niehs.nih.gov/seazit_qc/](https://rstudio.niehs.nih.gov/seazit_qc/).
 
-### Production & Staging:
+Both apps were written by Jui-Hua Hsieh. The iframe URLs are configured in `project/seazit/assets/seazit/containers/Seazitdiver.js` (`SHINY_URLS`).
 
- 
-- **[SEAZIT workshop](/apps/neurotox/) QC tab**: [staging](https://10.98.105.65:444/seazit/quality-control/), [production](https://sandbox.ntp.niehs.nih.gov/seazit/quality-control/) (*authorization required*). The QC tab for the seazit workshop was written using R-shiny by Jui Hua Hsieh; it presents plate-level and assay-level quality-control details on normalized response and variance in assay control response. The data used in the application are queried from the seazit application written in Django and stored in PostgreSQL.
-
-- **[SEAZIT workshop](/apps/neurotox/) Dataset tab**: [staging](https://10.98.105.65:444/seazit/dataset/), [production](https://sandbox.ntp.niehs.nih.gov/seazit/dataset/) (*authorization required*). The Dataset tab for the seazit workshop was written using R-shiny by Jui Hua Hsieh; it presents the raw data from varys labs for the study. The data used in the application are queried from the seazit application written in Django and stored in PostgreSQL.
-
- 
 ## Developer instructions
 
-Shiny-applications are created with no header/footer styles or custom styles applied; the header and footer and the main URL page is hosted by the NTP sandbox django application, and the Shiny application is embedded as a iFrame in the django application. This makes the shiny applications more portable, as well as limiting the number of applications which must be updated when NTP styles change.
+Shiny applications are created without header/footer or custom styles; the header, footer, and main page are hosted by the Django application and the Shiny app is embedded as an iframe. This keeps the Shiny apps portable and limits the number of applications to update when site styles change.
 
-One technical limitation is making sure the iFrame is resized to the full size, rather than being a fixed size; a jQuery script exists in Django which attempts to resize the iFrame whenever it changes, but it is fragile and may need updating.
+A jQuery script in Django resizes the iframe to its content; it is fragile and may need updating if the Shiny layout changes.
 
- 
+### Allowing cross-origin iframe access (dev only)
 
-### Allowing cross-origin iFrame access (dev only)
-
-During development, you may wish to modify an iFrame being served from another origin; this may not be an issue in a production environment. To allow for cross-origin iFrame access, start Google Chrome with [web security disabled](http://stackoverflow.com/questions/3102819/):
+During development, you may wish to modify an iframe served from another origin. Start Google Chrome with [web security disabled](http://stackoverflow.com/questions/3102819/):
 
 ```bash
 open -a "Google Chrome" --args --disable-web-security --user-data-dir

@@ -7,7 +7,7 @@ via [docker-compose](https://docs.docker.com/compose/) and are configured to
 restart automatically on failure.
 
 The deploy-seazit repository is private (contains server hostnames, environment
-variables, and nginx configuration). Access is limited to NTP maintainers.
+variables, and nginx configuration). Access is limited to SEAZIT-DIVER maintainers at NIEHS.
 
 Repository (internal access only): `NIEHS/deploy-seazit`
 
