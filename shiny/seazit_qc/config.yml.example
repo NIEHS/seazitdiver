@@ -1,0 +1,16 @@
+local_win:
+    seazit:
+        driver: 'PostgreSQL ANSI(x64)'
+        server: '<db-host>'
+        uid: '<db-user>'
+        pwd: '<db-password>'
+        port: 5432
+        database: 'dev_seazit'
+default:
+    seazit:
+        driver: 'PostgreSQL'
+        server: '<db-host>'
+        uid: '<db-user>'
+        pwd: '<db-password>'
+        port: 5432
+        database: 'dev_seazit'
