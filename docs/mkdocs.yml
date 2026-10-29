@@ -2,12 +2,14 @@ site_name: SEAZIT-DIVER
 theme: readthedocs
 nav:
 - Home: index.md
+- Installation: dev_installation.md
 - Applications:
   - Overview: apps/index.md
   - Shiny applications: apps/shiny.md
 - Database:
   - Overview: db/index.md
   - Schema details: db/schema.md
+- Header/footer updates: header_footer.md
 markdown_extensions:
   - toc:
       permalink: true

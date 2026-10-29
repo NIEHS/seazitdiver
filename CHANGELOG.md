@@ -13,7 +13,7 @@ All notable changes to SEAZIT-DIVER are documented in this file. Versions are da
 - Rebranded docs, admin site, page templates, and specification from "NTP SEAZIT" to **SEAZIT-DIVER**.
 - Removed legacy NTP sandbox material: docs pages for CEBS, neurotox, the 2017 workshop, and the GitLab-era contributing guide; legacy tox21 and neurotox schema images; `tox21` from `CORS_URLS_REGEX`; legacy nav entries from `docs/mkdocs.yml`.
 - Trimmed `README.md` to the project overview. Developer setup (tech stack, installation, database connection, dev server, docs build, troubleshooting) moved to the private `deploy-seazit` repository (`docs/dev_setup.md`).
-- Moved developer-only documentation (`deploying.md`, `seazit_installation.md`, `header_footer.md`, `dbdocs.sh`) to the private `deploy-seazit` repository (`docs/`). This repository now keeps public/tester-facing documentation only.
+- Moved deployment documentation (`deploying.md`, `dbdocs.sh`) to the private `deploy-seazit` repository (`docs/`). `seazit_installation.md` was renamed `dev_installation.md`; it and `header_footer.md` remain in `docs/docs/` here, with copies also kept in `deploy-seazit/docs/` for maintainers.
 - `Makefile` is no longer distributed (local developer convenience only; listed in `.gitignore`).
 - Updated header/footer to the 2026-10 NTP shared header/footer (2026-10-14).
 - nginx base image upgraded to `nginx:mainline-alpine`, libcurl bumped to 8.21.0, `server_tokens off` (2026-08-27).
