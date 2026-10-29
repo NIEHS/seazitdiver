@@ -1,3 +1,3 @@
-The documentation in the docs below is automatically generated from the django object-relational-model (ORM). To build the database documentation pages, ensure your virtual environment is activated and you're in the root path, then call:
+The database documentation pages are generated from the Django object-relational model (ORM) of the `seazit` app. SEAZIT data tables and materialized views (`mvw_seazit_*`) are read-only to Django (`managed = False`).
 
-    make dbdocs
+Regenerating these pages requires a database connection; maintainers use the script in the internal deployment repository.

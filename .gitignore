@@ -17,7 +17,6 @@ project/node_modules_back/
 # testing
 .tox
 .cache
-
 *.DS_Store
 .DS_Store
 
@@ -39,7 +38,7 @@ project/main/settings/__pycache__
 project/seazit/__pycache__
 project/utils/__pycache__
 project/main/__pycache__
-
+Makefile
 project/.DS_Store
 .ipynb_checkpoints
 .vscode
