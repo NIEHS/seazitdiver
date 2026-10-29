@@ -2,6 +2,10 @@
 
 > **Note:** A copy of this page is also kept in the private `deploy-seazit` repository (`docs/dev_installation.md`) for maintainers. This page contains legacy developer notes and reference material that may reference deprecated files (e.g., `docker-compose-dev.yml`). Paths such as `./project` and `./docs` below are relative to the `seazitdiver` checkout.
 
+## Deployment tooling
+
+Deployment is managed through the companion repository [NIEHS/deploy-seazit](https://github.com/NIEHS/deploy-seazit/tree/master) (private, maintainers only), which contains Fabric tasks that rebuild and start the Docker containers on the NIEHS servers.
+
 Installing the SEAZIT application requires installation both a webserver and a database. The following pre-requisites are required:
 
 - Anaconda or Miniconda
