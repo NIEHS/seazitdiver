@@ -1,13 +1,14 @@
-The NTP sandbox is composed of multiple docker containers, as specified in the following docker-compose files:
+# Applications overview
 
-- [staging](https://gitlab.niehs.nih.gov/ods/sandbox/blob/master/docker-compose-staging.yml)
-- [production](https://gitlab.niehs.nih.gov/ods/sandbox/blob/master/docker-compose-production.yml)
+SEAZIT-DIVER runs as a set of Docker containers defined in the docker-compose files at the repository root (`docker-compose-staging.yml`, `docker-compose-production.yml`, `docker-compose-vm_prod.yml`).
 
-A diagram describing container layout is below:
+A diagram describing the container layout is below:
 ![containers](../static/containers.png)
 
-The main entrypoint into the NTP sandbox is a Python django web-application. Other non-root paths may redirect to other applications by nginx (e.g. shiny apps, drug matrix, etc.).
+The main entrypoint is a Django web application (`project/seazit`) with a React frontend. nginx routes requests to Django; the Dataset and Quality control tabs embed R Shiny applications in iframes (see [Shiny applications](shiny.md)).
 
-On the **staging-server**, resources (postgres, redis, rserve, rabbitmq) are exposed on their native ports to allow external connections, behind the VPN firewall. On **production**, these connections are not available and applications are only connected via the docker-compose network.
+Supporting services:
 
-Authorization and authentication are application specific; some apps are open to anyone, and some require authentication. For more details, click the link for each application.
+- **PostgreSQL** - stores study data and the BMC analysis results (read through materialized views `mvw_seazit_*`)
+- **Redis** - Django / REST API response cache (staging and production)
+- **RServe** - optional R integration

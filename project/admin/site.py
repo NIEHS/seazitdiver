@@ -7,5 +7,5 @@ from . import forms
 site = admin.site
 
 site.login_form = forms.LoginForm
-site.site_header = 'NTP SEAZIT Administration'
-site.site_title = 'NTP SEAZIT Admin'
+site.site_header = 'SEAZIT-DIVER Administration'
+site.site_title = 'SEAZIT-DIVER Admin'

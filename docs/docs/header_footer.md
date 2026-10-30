@@ -1,5 +1,7 @@
 # NTP Shared Header/Footer Update and Jquery Update
 
+> A copy of this page is also kept in the private `deploy-seazit` repository (`docs/header_footer.md`) for maintainers.
+
 The NTP Public Website features a common shared header/footer across multiple websites and applications.
 Reference: https://wiki.niehs.nih.gov/pages/viewpage.action?pageId=1850994.
 

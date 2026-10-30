@@ -89,7 +89,13 @@ class RankedBarchartHandler extends React.Component {
                 .reverse()
                 .value();
         }
-        //
+        // Per substance (groupBy casrn), pick the row with the lowest
+        // non-mortality BMC and the row with the lowest mortality BMC.
+        // Use _.minBy, not _.min: in lodash 4, _.min ignores the iteratee and
+        // just returns the first row. pod_med_processed(null) is undefined, so
+        // inactive rows are skipped. If a substance is inactive on every row,
+        // _.minBy returns undefined; fall back to k[0] (its BMC is null, so
+        // the table shows "-" and the chart skips it).
         plotData = _.chain(data)
             .groupBy('casrn')
             .map((k) => {
@@ -97,12 +103,10 @@ class RankedBarchartHandler extends React.Component {
                         .map('endpoint_name')
                         .uniq()
                         .value(),
-                    minimimumNonViability = _.chain(k)
-                        .min((d) => pod_med_processed(d.med_pod_med))
-                        .value(),
-                    minimimumViability = _.chain(k)
-                        .min((d) => pod_med_processed(d.mort_med_pod_med))
-                        .value();
+                    minimimumNonViability =
+                        _.minBy(k, (d) => pod_med_processed(d.med_pod_med)) || k[0],
+                    minimimumViability =
+                        _.minBy(k, (d) => pod_med_processed(d.mort_med_pod_med)) || k[0];
                 let devtoxEndpoints = _.chain(k)
                     .filter((i) => i.final_dev_call === 'dev tox')
                     .map('endpoint_name')

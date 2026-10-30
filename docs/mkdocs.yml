@@ -1,22 +1,15 @@
-site_name: NTP Seazit
+site_name: SEAZIT-DIVER
 theme: readthedocs
-#pages:
 nav:
-- NTP Sandbox: index.md
-- Installation: seazit_installation.md
+- Home: index.md
+- Installation: dev_installation.md
 - Applications:
   - Overview: apps/index.md
-  - CEBS summary data browser: apps/cebs.md 
-  - Seazit workshop: apps/seazit.md 
-#  - Neurotoxicity workshop: apps/neurotox.md
-#  - Fiveday: apps/fiveday.md
-  #- RoC PDFs: apps/roc_pdfs.md
   - Shiny applications: apps/shiny.md
 - Database:
   - Overview: db/index.md
   - Schema details: db/schema.md
-- Contributing: contributing.md
-- Deploying: deploying.md
+- Header/footer updates: header_footer.md
 markdown_extensions:
   - toc:
       permalink: true

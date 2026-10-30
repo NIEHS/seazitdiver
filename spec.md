@@ -1,16 +1,16 @@
-# NTP SEAZIT — Technical Specification
+# SEAZIT-DIVER — Technical Specification
 
-**Version:** 2026-07-23
-**Project:** NTP SEAZIT
-**Organization:** National Toxicology Program (NTP), NIEHS
+**Version:** 2026-10-29
+**Project:** SEAZIT-DIVER (Systematic Evaluation of the Application of Zebrafish in Toxicology – Data Integration and Visualization Enabling Resource)
+**Organization:** Division of Translational Toxicology (DTT), NIEHS
 
 ---
 
 ## 1. Overview
 
-NTP SEAZIT is a full-stack Django web application designed as a rapid prototyping and data tooling platform for the National Toxicology Program at NIEHS. It provides a unified scaffold for building internal data analysis tools, REST APIs, scientific visualizations, and experimental features without requiring a new deployment environment for each project.
+SEAZIT-DIVER is a full-stack Django + React web application for analyzing, comparing, and visualizing intra- and inter-laboratory zebrafish developmental toxicity data from the SEAZIT Interlaboratory Study. It provides tabs for study design, quality control, concentration-response curves, benchmark concentration (BMC) ranking by dataset, and integrative cross-assay/cross-laboratory comparison.
 
-The application is intentionally structured to be extensible: new Django apps can be registered and new React-based frontend components integrated with minimal configuration. It serves both internal analysts and developers who need to build, test, and iterate on NTP data workflows quickly.
+The Django backend exposes a REST API over PostgreSQL materialized views (`mvw_seazit_*`); the React frontend renders the interactive visualizations; the Dataset and Quality control tabs are R Shiny applications embedded as iframes.
 
 ---
 
@@ -79,7 +79,6 @@ seazitdiver/
 ├── docs/                       # MkDocs documentation source
 ├── bin/                        # Shell scripts (dev.sh, dev.local.sh)
 ├── conda.yml                   # Conda environment definition
-├── Makefile                    # Developer convenience commands
 ├── docker-compose-production.yml   # Production stack
 ├── docker-compose-staging.yml      # Staging stack
 ├── docker-compose-vm_prod.yml      # VM production stack
@@ -170,7 +169,7 @@ The active settings module is selected via the `DJANGO_SETTINGS_MODULE` environm
 
 ### Configuration
 
-Local development connects to the shared NTP PostgreSQL development server over NIEHS VPN. Production and staging deployments connect via Docker to the same or related PostgreSQL instances defined in the deployment repository's `.env.*` files.
+The full SEAZIT dataset is hosted on an NIEHS-internal PostgreSQL server; local developer access currently requires NIEHS network (VPN) connectivity. A public, schema-matched sample database is being prepared (see [CHANGELOG.md](CHANGELOG.md) for status). Production and staging deployments connect via Docker to PostgreSQL instances defined in the `deploy-seazit` repository's `.env.*` files.
 
 | Property    | Value                                                            |
 |-------------|------------------------------------------------------------------|
@@ -244,11 +243,11 @@ RServe provides a TCP server interface to the R statistical computing environmen
 
 ### Pytest Configuration
 
-Configured in `project/setup.cfg`. Run via:
+Configured in `project/setup.cfg`. Run from the `project/` directory:
 
 ```bash
-make test         # unit tests only
-make test_all     # unit + integration (PYTEST_INTEGRATION=T)
+pytest                              # unit tests only
+PYTEST_INTEGRATION=T pytest         # unit + integration tests
 ```
 
 ### Linting and Formatting
