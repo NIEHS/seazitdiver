@@ -2,7 +2,9 @@ site_name: SEAZIT-DIVER
 theme: readthedocs
 nav:
 - Home: index.md
-- Installation: dev_installation.md
+- Installation:
+  - Developer setup: dev_installation.md
+  - Build local Docker images: local_docker_build.md
 - Applications:
   - Overview: apps/index.md
   - Shiny applications: apps/shiny.md

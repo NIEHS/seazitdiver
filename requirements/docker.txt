@@ -1,0 +1,4 @@
+-r production.txt
+
+# serve static files from gunicorn (local docker has no nginx)
+whitenoise==6.7.0  # last release supporting Python 3.8
