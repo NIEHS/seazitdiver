@@ -1,6 +1,6 @@
 import os
 
-PROJECT_NAME = 'seazit_app'
+PROJECT_NAME = 'seazitdiver'
 DB_NAME = 'dev_seazit'
 PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
 PROJECT_ROOT = os.path.abspath(os.path.join(PROJECT_PATH, os.pardir))
@@ -50,7 +50,6 @@ STATIC_URL = '/static_seazit/'
 
 STATICFILES_DIRS = (
     os.path.join(PROJECT_PATH, 'static_seazit'),
-    os.path.join(PROJECT_PATH, 'seazit_app/project/dist'),
 )
 
 STATICFILES_FINDERS = (
@@ -271,4 +270,4 @@ MARKDOWN_DEUX_STYLES = {
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_URLS_REGEX = r'/(tox21|seazit)/api/.*$'
+CORS_URLS_REGEX = r'/seazit/api/.*$'

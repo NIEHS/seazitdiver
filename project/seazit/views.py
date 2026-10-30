@@ -60,8 +60,8 @@ class SeazitIntegrative(SeazitTemplateView):
     active_view_name = "seazit_integrative"
 
 
-class SeazitApp(SeazitTemplateView):
+class Seazitdiver(SeazitTemplateView):
     """SPA shell — serves all 3 React tabs in a single page."""
-    template_name = "seazit/seazit_app.html"
-    active_view_name = "seazit_app"
+    template_name = "seazit/seazitdiver.html"
+    active_view_name = "seazitdiver"
 

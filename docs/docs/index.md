@@ -1,18 +1,17 @@
-The seazit is a webbased data visulization application allow scientfic researchers quickly analyze, compare, and visualize multiple DNT assays from the larg data sets.
+# SEAZIT-DIVER
 
-Work flow: Design the NeuroToxicity study on zebrafish -> multi labs provide blind assay result sets that we called raw data -> data qulity control ensure the quality of the data meet the expectation and standardize the data format  -> Design a relation database and create a logic relation on the raw data -> virtualization endpoint data from the analysis and propulate the end point into relational database ->  design multi tierd web architecture allow user interactive with the endpoint data and visual the static result. -> automation deploy the application in docker containers and it can run any where.
+SEAZIT-DIVER (Systematic Evaluation of the Application of Zebrafish in Toxicology - Data Integration and Visualization Enabling Resource) is a web application for analyzing, comparing, and visualizing intra- and inter-laboratory zebrafish developmental toxicity data from the SEAZIT Interlaboratory Study.
 
+Comparisons are organized into tabs:
 
+- **About** - study overview
+- **Dataset** - experimental design, test substances, protocols, and phenotype ontology (R Shiny)
+- **Quality control** - plate- and assay-level QC (R Shiny)
+- **Concentration response** - chemical-specific concentration-response curves
+- **BMC by dataset** - benchmark concentration (BMC) ranking of test substances per lab/assay (Activity or Specificity)
+- **Integrative analyses** - comparison of results across assays and laboratories
+- **Resources** - publications and contributors
 
-Data virtualization enables organizations to increase analytics effectiveness and reduce analytics costs by creating a virtual layer that aggregates data from multiple sources.  
+Public site: [https://seazit.dtt.niehs.nih.gov/](https://seazit.dtt.niehs.nih.gov/)
 
-
-https://hdsr.mitpress.mit.edu/pub/zok97i7p/release/3
-
-The NTP sandbox is deployed on two servers, a public-facing production server:
-
-- Production (public URL): [https://sandbox.ntp.niehs.nih.gov](https://sandbox.ntp.niehs.nih.gov)
-
-And an internal staging-server:
-
-- Staging (NIH VPN only): [https://sandbox-staging.ntp.niehs.nih.gov](https://sandbox-staging.ntp.niehs.nih.gov)
+For installation, see the [top-level README](https://github.com/NIEHS/seazitdiver#readme).
