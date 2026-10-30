@@ -15,6 +15,7 @@ All notable changes to SEAZIT-DIVER are documented in this file. Versions are da
 - Trimmed `README.md` to the project overview. Developer setup (tech stack, installation, database connection, dev server, docs build, troubleshooting) moved to the private `deploy-seazit` repository (`docs/dev_setup.md`).
 - Moved deployment documentation (`deploying.md`, `dbdocs.sh`) to the private `deploy-seazit` repository (`docs/`). `seazit_installation.md` was renamed `dev_installation.md`; it and `header_footer.md` remain in `docs/docs/` here, with copies also kept in `deploy-seazit/docs/` for maintainers.
 - `Makefile` is no longer distributed (local developer convenience only; listed in `.gitignore`).
+- Synced `spec.md` with the current repository: removed `Makefile` from the directory tree, replaced `make test` / `make test_all` with direct `pytest` commands, and updated the Database section to describe NIEHS-internal data access and the planned public sample database.
 - Updated header/footer to the 2026-10 NTP shared header/footer (2026-10-14).
 - nginx base image upgraded to `nginx:mainline-alpine`, libcurl bumped to 8.21.0, `server_tokens off` (2026-08-27).
 - Renamed `SeazitApp` view/template/container to `Seazitdiver` (2026-08-26).

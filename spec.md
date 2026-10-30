@@ -79,7 +79,6 @@ seazitdiver/
 ├── docs/                       # MkDocs documentation source
 ├── bin/                        # Shell scripts (dev.sh, dev.local.sh)
 ├── conda.yml                   # Conda environment definition
-├── Makefile                    # Developer convenience commands
 ├── docker-compose-production.yml   # Production stack
 ├── docker-compose-staging.yml      # Staging stack
 ├── docker-compose-vm_prod.yml      # VM production stack
@@ -170,7 +169,7 @@ The active settings module is selected via the `DJANGO_SETTINGS_MODULE` environm
 
 ### Configuration
 
-Local development connects to the shared NTP PostgreSQL development server over NIEHS VPN. Production and staging deployments connect via Docker to the same or related PostgreSQL instances defined in the deployment repository's `.env.*` files.
+The full SEAZIT dataset is hosted on an NIEHS-internal PostgreSQL server; local developer access currently requires NIEHS network (VPN) connectivity. A public, schema-matched sample database is being prepared (see [CHANGELOG.md](CHANGELOG.md) for status). Production and staging deployments connect via Docker to PostgreSQL instances defined in the `deploy-seazit` repository's `.env.*` files.
 
 | Property    | Value                                                            |
 |-------------|------------------------------------------------------------------|
@@ -244,11 +243,11 @@ RServe provides a TCP server interface to the R statistical computing environmen
 
 ### Pytest Configuration
 
-Configured in `project/setup.cfg`. Run via:
+Configured in `project/setup.cfg`. Run from the `project/` directory:
 
 ```bash
-make test         # unit tests only
-make test_all     # unit + integration (PYTEST_INTEGRATION=T)
+pytest                              # unit tests only
+PYTEST_INTEGRATION=T pytest         # unit + integration tests
 ```
 
 ### Linting and Formatting
