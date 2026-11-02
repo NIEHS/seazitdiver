@@ -7,7 +7,7 @@
 ![Yarn](https://img.shields.io/badge/Yarn-4.3.1-2C8EBB?logo=yarn)
 ![Django](https://img.shields.io/badge/Django-4.2.18-092E20?logo=django)
 [![License](https://img.shields.io/badge/License-Public%20Domain-brightgreen)](LICENSE.md)
-[![Latest Release](https://img.shields.io/github/v/release/NIEHS/seazitdiver)](https://github.com/NIEHS/seazitdiver/releases)
+[![Latest Release](https://img.shields.io/github/v/release/NIEHS/seazitdiver)](https://github.com/NIEHS/seazitdiver/releases/tag/local-Docker-package)
 
 > An interactive web application for exploring and comparing zebrafish embryonic developmental toxicity data from the SEAZIT Interlaboratory Study.
 
