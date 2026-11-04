@@ -169,7 +169,7 @@ The active settings module is selected via the `DJANGO_SETTINGS_MODULE` environm
 
 ### Configuration
 
-The full SEAZIT dataset is hosted on an NIEHS-internal PostgreSQL server; local developer access currently requires NIEHS network (VPN) connectivity. A public, schema-matched sample database is being prepared (see [CHANGELOG.md](CHANGELOG.md) for status). Production and staging deployments connect via Docker to PostgreSQL instances defined in the `deploy-seazit` repository's `.env.*` files.
+The full SEAZIT dataset is hosted on an NIEHS-internal PostgreSQL server; local developer access currently requires NIEHS network (VPN) connectivity. A public, schema-matched sample database (3 DRF protocols, PostgreSQL 17 format) is distributed with the local Docker tester package: see the [local-Docker-package GitHub release](https://github.com/NIEHS/seazitdiver/releases/tag/local-Docker-package). Production and staging deployments connect via Docker to PostgreSQL instances defined in the `deploy-seazit` repository's `.env.*` files.
 
 | Property    | Value                                                            |
 |-------------|------------------------------------------------------------------|
